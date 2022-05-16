@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_apps/data/local/database_helper.dart';
-import 'package:restaurant_apps/data/local/database_provider.dart';
+import 'package:restaurant_apps/data/local/db/database_helper.dart';
+import 'package:restaurant_apps/data/local/db/database_provider.dart';
 import 'package:restaurant_apps/models/restaurants.dart';
 import '../models/result_state.dart';
 import '../widget/platform_widget.dart';

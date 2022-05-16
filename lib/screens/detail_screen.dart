@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_apps/data/local/database_provider.dart';
+import 'package:restaurant_apps/data/local/db/database_provider.dart';
 import 'package:restaurant_apps/data/remote/api_service.dart';
 import 'package:restaurant_apps/models/detail.dart';
 import 'package:restaurant_apps/models/restaurants.dart';

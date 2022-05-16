@@ -1,10 +1,14 @@
-
+import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_apps/data/local/preference/preference_provider.dart';
 
+import '../notification/scedhuling_provider.dart';
 import '../widget/platform_widget.dart';
 
-class SettingsScreen extends StatelessWidget{
+class SettingsScreen extends StatelessWidget {
   static const routeName = "/settings_screen";
 
   @override
@@ -20,17 +24,48 @@ class SettingsScreen extends StatelessWidget{
       appBar: AppBar(
         title: const Text("Settings"),
       ),
-      body: const Text("Settings"),
+      body: (_buildList(context)),
     );
   }
 
   Widget _buildIos(BuildContext context) {
-    return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text('Settings'),
       ),
-      child: Text("Settings"),
+      child: _buildList(context),
     );
   }
 
+  Widget _buildList(BuildContext context) {
+    return Consumer<PreferenceProvider>(
+      builder: (context, provider, child) {
+        return ListView(
+          children: [
+            Material(
+              child: ListTile(
+                title: const Text('Scheduling Restaurant'),
+                trailing: Consumer<SchedulingProvider>(
+                  builder: (context, scheduled, _) {
+                    return Switch.adaptive(
+                      value: provider.isDailyNotifActive,
+                      onChanged: (value) async {
+                        if (Platform.isIOS) {
+                          log("Not Implemented");
+                          // customDialog(context);
+                        } else {
+                          scheduled.scheduledNews(value);
+                          provider.enableDailyNotif(value);
+                        }
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

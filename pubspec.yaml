@@ -38,6 +38,10 @@ dependencies:
   sqflite: ^2.0.2+1
   shared_preferences: ^2.0.15
   path: ^1.8.0
+  android_alarm_manager_plus: ^2.0.3
+  flutter_local_notifications: ^5.0.0+3
+  rxdart: ^0.26.0
+  intl: ^0.17.0
 
 
 dev_dependencies:

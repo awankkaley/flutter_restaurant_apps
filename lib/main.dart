@@ -15,12 +15,14 @@ import 'package:restaurant_apps/screens/main_screen.dart';
 import 'package:restaurant_apps/screens/search_screen.dart';
 import 'package:restaurant_apps/screens/settings_screen.dart';
 import 'package:restaurant_apps/styles/styles.dart';
+import 'package:restaurant_apps/utils/navigation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/remote/api_service.dart';
 import 'data/remote/provider/restaurant_provider.dart';
 import 'notification/background_service.dart';
 import 'notification/notification_helper.dart';
+import 'notification/scedhuling_provider.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
             create: (_) => RestaurantProvider(apiService: ApiService())),
         ChangeNotifierProvider(
             create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper())),
+        ChangeNotifierProvider(create: (_) => SchedulingProvider()),
         ChangeNotifierProvider(
           create: (_) => PreferenceProvider(
             preferencesHelper: PreferencesHelper(
@@ -95,6 +98,7 @@ class MyApp extends StatelessWidget {
           unselectedItemColor: Colors.grey,
         ),
       ),
+      navigatorKey: navigatorKey,
       initialRoute: MainScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),

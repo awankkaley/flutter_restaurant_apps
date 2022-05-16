@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_apps/notification/notification_helper.dart';
+import 'package:restaurant_apps/screens/detail_screen.dart';
 import 'package:restaurant_apps/screens/favorite_screen.dart';
 import 'package:restaurant_apps/screens/home_screen.dart';
 import 'package:restaurant_apps/screens/settings_screen.dart';
@@ -14,7 +16,7 @@ class MainScreen extends StatefulWidget{
 }
 
 class _MainScreenState extends State<MainScreen> {
-
+  final NotificationHelper _notificationHelper = NotificationHelper();
   int _bottomNavIndex = 0;
 
   final List<Widget> _listWidget = [
@@ -71,5 +73,19 @@ class _MainScreenState extends State<MainScreen> {
       androidBuilder: _buildAndroid,
       iosBuilder: _buildIos,
     );
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(DetailScreen.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 }

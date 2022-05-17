@@ -6,6 +6,7 @@ import 'package:restaurant_apps/screens/detail_screen.dart';
 import 'package:restaurant_apps/screens/favorite_screen.dart';
 import 'package:restaurant_apps/screens/home_screen.dart';
 import 'package:restaurant_apps/screens/settings_screen.dart';
+import 'package:restaurant_apps/styles/styles.dart';
 import '../widget/platform_widget.dart';
 
 class MainScreen extends StatefulWidget{
@@ -60,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _buildIos(BuildContext context) {
     return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(items: _bottomNavBarItems),
+      tabBar: CupertinoTabBar(items: _bottomNavBarItems, activeColor: secondaryColor,),
       tabBuilder: (context, index) {
         return _listWidget[index];
       },

@@ -133,11 +133,11 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildIos(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text("Search Restaurant"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Search Restaurant"),
       ),
-      child: _buildList(context),
+      body: (_buildList(context)),
     );
   }
 

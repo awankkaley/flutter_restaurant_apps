@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_apps/data/local/preference/preference_provider.dart';
 
 import '../notification/scedhuling_provider.dart';
+import '../widget/custom_dialog.dart';
 import '../widget/platform_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -51,8 +52,7 @@ class SettingsScreen extends StatelessWidget {
                       value: provider.isDailyNotifActive,
                       onChanged: (value) async {
                         if (Platform.isIOS) {
-                          log("Not Implemented");
-                          // customDialog(context);
+                          customDialog(context);
                         } else {
                           scheduled.scheduledNews(value);
                           provider.enableDailyNotif(value);

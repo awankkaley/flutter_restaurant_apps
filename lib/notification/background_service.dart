@@ -10,14 +10,12 @@ final ReceivePort port = ReceivePort();
 
 class BackgroundService {
   static BackgroundService? _instance;
-  static final String _isolateName = 'isolate';
+  static String _isolateName = 'isolate';
   static SendPort? _uiSendPort;
 
-  BackgroundService._internal() {
-    _instance = this;
-  }
+  BackgroundService._createObject();
 
-  factory BackgroundService() => _instance ?? BackgroundService._internal();
+  factory BackgroundService() => _instance ?? BackgroundService._createObject();
 
   void initializeIsolate() {
     IsolateNameServer.registerPortWithName(
@@ -35,5 +33,9 @@ class BackgroundService {
 
     _uiSendPort ??= IsolateNameServer.lookupPortByName(_isolateName);
     _uiSendPort?.send(null);
+  }
+
+  Future<void> someTask() async {
+    print('Execute task');
   }
 }

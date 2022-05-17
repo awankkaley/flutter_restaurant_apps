@@ -27,7 +27,7 @@ import 'notification/scedhuling_provider.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final NotificationHelper _notificationHelper = NotificationHelper();

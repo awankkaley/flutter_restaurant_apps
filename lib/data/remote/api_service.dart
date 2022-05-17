@@ -13,7 +13,6 @@ class ApiService {
   Future<RestaurantResult> getList() async {
     final response = await http.get(Uri.parse(_baseUrl + "/list"));
     if (response.statusCode == 200) {
-      log(response.body);
       return RestaurantResult.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load data');
